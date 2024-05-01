@@ -11,7 +11,7 @@ import wind_icon from "../Assets/wind.png";
 import humidity_icon from "../Assets/humidity.png";
 
 const WeatherApp = () => {
-  const api_key = "666bd4561ea379aaac79f0b9335c3f1b";
+  const api_key = process.env.REACT_APP_API_KEY;
   const [wicon, setWicon] = useState(cloud_icon);
 
   const search = async () => {
@@ -29,7 +29,7 @@ const WeatherApp = () => {
 
     humidity[0].innerHTML = data.main.humidity + " %";
     wind[0].innerHTML = Math.floor(data.wind.speed) + " km/h";
-    temprature[0].innerHTML = Math.floor(data.main.temp) + " 0°C";
+    temprature[0].innerHTML = Math.floor(data.main.temp) + " °C";
     location[0].innerHTML = data.name;
 
     if (data.weather[0].icon === "01d" || data.weather[0].icon === "01n") {
@@ -85,7 +85,7 @@ const WeatherApp = () => {
       <div className="weather-image">
         <img src={wicon} alt="" />
       </div>
-      <div className="weather-temp">24c</div>
+      <div className="weather-temp">24 °C</div>
       <div className="weather-location">London</div>
       <div className="data-container">
         <div className="element">
